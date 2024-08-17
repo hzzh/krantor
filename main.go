@@ -167,7 +167,7 @@ func watchFolder(client *putio.Client) {
 					return
 				}
 				log.Println("event:", event) // Flip on for verbose logging
-				if event.Has(fsnotify.Create) {
+				if event.Has(fsnotify.Write) {
 					go prepareFile(event, client) // run in separate thread
 				}
 			case err, ok := <-w.Errors:
